@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       }
                     )
-                  ),
+                  ),  
                 // Text("${loggedInUser.fullName}",
                 //     style: TextStyle(
                 //       color: Colors.black54,
