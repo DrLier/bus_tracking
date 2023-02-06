@@ -71,7 +71,7 @@ class _welcomeScreenState extends State<welcomeScreen> {
                         height: 20,
                       ),
                       Text(
-                        "Welcome to \n KRU Bus Tracking",
+                        "Welcome to \n IBUS",
                         style: GoogleFonts.poppins(
                             fontSize: 34, fontWeight: FontWeight.w700),
                         textAlign: TextAlign.center,

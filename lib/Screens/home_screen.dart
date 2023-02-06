@@ -6,6 +6,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'login_screen.dart';
+import 'listgunung.dart';
+import 'listpantai.dart';
+import 'settings.dart';
+import 'editprofile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -50,106 +54,201 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        bool? result = await _onBackPressed();
-        if (result == null) {
-          result = false;
-        }
-        return result;
-      },
-      child: new Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-              size: 30,
-            ),
-            onPressed: () {
-              _onBackPressed();
-            },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("wisata masa lalu"),
+        backgroundColor: Colors.blueAccent,
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 15),
+            child: Icon(Icons.search),
           ),
-        ),
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 150,
-                  child: Image.asset("assets/images/logo.png",
-                      fit: BoxFit.contain),
+          Padding(
+            padding: EdgeInsets.only(right: 15),
+            child: PopupMenuButton<int>(
+              onSelected: (item) => onSelected(context, item),
+              itemBuilder: (context) => [
+                PopupMenuItem<int>(
+                  value: 0,
+                  child: Text('Profile'),
                 ),
-                Text(
-                  "Welcome Back",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                PopupMenuItem<int>(
+                  value: 1,
+                  child: Text('Setting'),
                 ),
-                SizedBox(
-                  height: 10,
+                PopupMenuItem<int>(
+                  child: GestureDetector(
+                    onTap: () {
+                      FirebaseAuth.instance.signOut();
+                    },
+                    child: Text('Sign Out'),
+                  ),
                 ),
-                Container(
-                  height:250,
-                  padding:const EdgeInsets.symmetric(vertical:20),
-                  child:StreamBuilder<QuerySnapshot>(
-                    stream:users,
-                    builder:(
-                        BuildContext context,
-                      AsyncSnapshot<QuerySnapshot>snapshot,){
-                        if(snapshot.hasError){
-                          return Text('Something went wrong.');
-                        }
-                        if(snapshot.connectionState == ConnectionState.waiting){
-                          return Text('Loading');
-                        }
-                        final data=snapshot.requireData;
-
-                        return ListView.builder(
-                        itemCount:data.size,
-                          itemBuilder:(context,index){
-                            return Text('${data.docs[index]['fullname']} ${data.docs[index]['email']}');
-                          }
-                        );
-                      }
-                    )
-                  ),  
-                // Text("${loggedInUser.fullName}",
-                //     style: TextStyle(
-                //       color: Colors.black54,
-                //       fontWeight: FontWeight.w500,
-                //     )),
-                // Text("${loggedInUser.email}",
-                //     style: TextStyle(
-                //       color: Colors.black54,
-                //       fontWeight: FontWeight.w500,
-                //     )),
-                // SizedBox(
-                //   height: 15,
-                // ),
-                ActionChip(
-                  label: Text("Logout"),
-                  onPressed: () async {
-                    await _prefService
-                      .removeCache("email", "password")
-                      .whenComplete(() => {
-                        logout(context),
-                      });
-                  }
+                PopupMenuItem<int>(
+                  child: GestureDetector(
+                    onTap: () {
+                      FirebaseAuth.instance.currentUser?.delete();
+                    },
+                    child: Text('Delete Account'),
+                  ),
                 ),
               ],
             ),
           ),
-        )
-      )
+        ],
+      ),
+      body: Container(
+        margin: EdgeInsets.symmetric(vertical: 100),
+        child: GridView.count(
+            padding: const EdgeInsets.all(20),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+            children: <Widget>[
+              Card(
+                color: Colors.blue,
+                elevation: 8,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(28)),
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: InkWell(
+                  splashColor: Colors.black26,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const listGunung()));
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Ink.image(
+                        image: AssetImage('assets/pantai.png'),
+                        height: 130,
+                        width: 160,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(height: 6),
+                      Text(
+                        'Pantai',
+                        style: TextStyle(fontSize: 15, color: Colors.white),
+                      ),
+                      SizedBox(height: 6),
+                    ],
+                    textDirection: TextDirection.ltr,
+                  ),
+                ),
+              ),
+              Card(
+                color: Colors.blue,
+                elevation: 8,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(28)),
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: InkWell(
+                  splashColor: Colors.black26,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const listpantai()));
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Ink.image(
+                        image: AssetImage('assets/gunung.jpg'),
+                        height: 130,
+                        width: 160,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(height: 6),
+                      Text(
+                        'Gunung',
+                        style: TextStyle(fontSize: 15, color: Colors.white),
+                      ),
+                      SizedBox(height: 6),
+                    ],
+                    textDirection: TextDirection.ltr,
+                  ),
+                ),
+              ),
+              Card(
+                color: Colors.blue,
+                elevation: 8,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(28)),
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: InkWell(
+                  splashColor: Colors.black26,
+                  onTap: () {},
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Ink.image(
+                        image: AssetImage('assets/goa.jpg'),
+                        height: 130,
+                        width: 160,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(height: 6),
+                      Text(
+                        'Gunung',
+                        style: TextStyle(fontSize: 15, color: Colors.white),
+                      ),
+                      SizedBox(height: 6),
+                    ],
+                    textDirection: TextDirection.ltr,
+                  ),
+                ),
+              ),
+              Card(
+                color: Colors.blue,
+                elevation: 8,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(28)),
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: InkWell(
+                  splashColor: Colors.black26,
+                  onTap: () {},
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Ink.image(
+                        image: AssetImage('assets/airterjun.png'),
+                        height: 130,
+                        width: 160,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(height: 6),
+                      Text(
+                        'Gunung',
+                        style: TextStyle(fontSize: 15, color: Colors.white),
+                      ),
+                      SizedBox(height: 6),
+                    ],
+                    textDirection: TextDirection.ltr,
+                  ),
+                ),
+              ),
+            ]),
+      ),
     );
+  }
+
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => SettingsUI()),
+        );
+        break;
+      case 1:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => SettingsPage()),
+        );
+        break;
+    }
   }
 
   // the logout function
