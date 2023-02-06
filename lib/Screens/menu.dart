@@ -11,7 +11,7 @@ class MenuCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        var index = menu.id;
+        int index = menu.id;
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Gunung(index)));
       },

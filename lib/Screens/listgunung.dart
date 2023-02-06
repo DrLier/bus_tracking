@@ -55,8 +55,10 @@ class listGunung extends StatelessWidget {
                                   note: e['note'],
                                   provinsi: e['provinsi'],
                                 ),
+
                               ),
                             )
+
                             .toList(),
                       );
                     } else {

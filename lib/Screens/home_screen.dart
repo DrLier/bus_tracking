@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("wisata masa lalu"),
+        title: Text("Travelaja"),
         backgroundColor: Colors.blueAccent,
         actions: [
           Padding(
@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const listGunung()));
+                            builder: (context) => const listpantai()));
                   },
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -151,71 +151,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const listpantai()));
+                            builder: (context) => const listGunung()));
                   },
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Ink.image(
                         image: AssetImage('assets/gunung.jpg'),
-                        height: 130,
-                        width: 160,
-                        fit: BoxFit.cover,
-                      ),
-                      SizedBox(height: 6),
-                      Text(
-                        'Gunung',
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                      ),
-                      SizedBox(height: 6),
-                    ],
-                    textDirection: TextDirection.ltr,
-                  ),
-                ),
-              ),
-              Card(
-                color: Colors.blue,
-                elevation: 8,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(28)),
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: InkWell(
-                  splashColor: Colors.black26,
-                  onTap: () {},
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Ink.image(
-                        image: AssetImage('assets/goa.jpg'),
-                        height: 130,
-                        width: 160,
-                        fit: BoxFit.cover,
-                      ),
-                      SizedBox(height: 6),
-                      Text(
-                        'Gunung',
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                      ),
-                      SizedBox(height: 6),
-                    ],
-                    textDirection: TextDirection.ltr,
-                  ),
-                ),
-              ),
-              Card(
-                color: Colors.blue,
-                elevation: 8,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(28)),
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: InkWell(
-                  splashColor: Colors.black26,
-                  onTap: () {},
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Ink.image(
-                        image: AssetImage('assets/airterjun.png'),
                         height: 130,
                         width: 160,
                         fit: BoxFit.cover,
