@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_password_login/model/routes.dart';
 import 'package:email_password_login/model/user_model.dart';
-import 'package:email_password_login/screens/welcome_screen.dart';
+import 'package:email_password_login/Screens/welcome_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';

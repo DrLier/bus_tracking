@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:email_password_login/model/routes.dart';
 import 'package:email_password_login/model/shared_preference.dart';
-import 'package:email_password_login/screens/home_screen.dart';
-import 'package:email_password_login/screens/otp_screen.dart';
-import 'package:email_password_login/screens/registration_screen.dart';
-import 'package:email_password_login/screens/welcome_screen.dart';
+import 'package:email_password_login/Screens/home_screen.dart';
+import 'package:email_password_login/Screens/otp_screen.dart';
+import 'package:email_password_login/Screens/registration_screen.dart';
+import 'package:email_password_login/Screens/welcome_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

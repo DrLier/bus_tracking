@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:email_password_login/screens/login_screen.dart';
+import 'package:email_password_login/Screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
