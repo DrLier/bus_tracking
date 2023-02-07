@@ -6,33 +6,33 @@ import 'package:email_password_login/model/user.dart';
 
 var sampleUser = User(
     id: "user01",
-    name: "Nathan",
+    name: "",
     email: "reyhannathaniel121@gmail.com",
     accountType: "Premium",
     imageProfile: "assets/images/user_profile_example1.png");
 
-var _Surabaya = SportCategory(
+var _Surabaya = BusCategory(
   name: "Surabaya",
   image: "assets/icons/Surabaya.png",
 );
-var _Kediri = SportCategory(
+var _Kediri = BusCategory(
   name: "Kediri",
   image: "assets/icons/Kediri.png",
 );
-var _Jakarta = SportCategory(
+var _Jakarta = BusCategory(
   name: "Jakarta",
   image: "assets/icons/Jakarta.png",
 );
-var _Jogja = SportCategory(
+var _Jogja = BusCategory(
   name: "Jogja",
   image: "assets/icons/Jogja.png",
 );
-var _Bandung = SportCategory(
+var _Bandung = BusCategory(
   name: "Bandung",
   image: "assets/icons/Bandung.png",
 );
 
-List<SportCategory> sportCategories = [
+List<BusCategory> sportCategories = [
   _Surabaya,
   _Bandung,
   _Jakarta,
@@ -82,7 +82,7 @@ SportField Purabaya = SportField(
     openDay: "All Day",
     openTime: "07.00",
     closeTime: "22.00",
-    imageAsset: "assets/images/Purabaya.png",
+    imageAsset: "assets/images/purabaya.png",
     price: 100000);
 SportField Senen = SportField(
     id: "03",

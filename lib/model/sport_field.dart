@@ -4,7 +4,7 @@ import 'package:email_password_login/model/field_facility.dart';
 class SportField {
   String id;
   String name;
-  SportCategory category;
+  BusCategory category;
   List<FieldFacility> facilities;
   String address;
   String phoneNumber;

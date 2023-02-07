@@ -1,6 +1,6 @@
-class SportCategory {
+class BusCategory {
   String name;
   String image;
 
-  SportCategory({required this.name, required this.image});
+  BusCategory({required this.name, required this.image});
 }
